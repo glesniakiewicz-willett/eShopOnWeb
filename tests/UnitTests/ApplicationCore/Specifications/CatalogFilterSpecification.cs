@@ -22,6 +22,22 @@ public class CatalogFilterSpecification
         Assert.Equal(expectedCount, result.Count());
     }
 
+    [Theory]
+    [InlineData(null, null, 5)] // no price filter
+    [InlineData(25.0, null, 3)] // min only
+    [InlineData(null, 25.0, 2)] // max only
+    [InlineData(20.0, 40.0, 3)] // both sides
+    [InlineData(50.0, null, 1)] // min at the top boundary
+    [InlineData(35.0, 15.0, 0)] // min greater than max
+    public void MatchesExpectedNumberOfItemsByPrice(double? priceMin, double? priceMax, int expectedCount)
+    {
+        var spec = new eShopWeb.ApplicationCore.Specifications.CatalogFilterSpecification(null, null, (decimal?)priceMin, (decimal?)priceMax);
+
+        var result = spec.Evaluate(GetTestItemCollectionWithPrices()).ToList();
+
+        Assert.Equal(expectedCount, result.Count);
+    }
+
     public List<CatalogItem> GetTestItemCollection()
     {
         return new List<CatalogItem>()
@@ -31,6 +47,18 @@ public class CatalogFilterSpecification
                 new CatalogItem(3, 1, "Description", "Name", 0, "FakePath"),
                 new CatalogItem(1, 2, "Description", "Name", 0, "FakePath"),
                 new CatalogItem(2, 2, "Description", "Name", 0, "FakePath"),
+            };
+    }
+
+    public List<CatalogItem> GetTestItemCollectionWithPrices()
+    {
+        return new List<CatalogItem>()
+            {
+                new CatalogItem(1, 1, "Description", "Name", 10m, "FakePath"),
+                new CatalogItem(1, 1, "Description", "Name", 20m, "FakePath"),
+                new CatalogItem(1, 1, "Description", "Name", 30m, "FakePath"),
+                new CatalogItem(1, 1, "Description", "Name", 40m, "FakePath"),
+                new CatalogItem(1, 1, "Description", "Name", 50m, "FakePath"),
             };
     }
 }

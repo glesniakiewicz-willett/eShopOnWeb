@@ -9,5 +9,7 @@ public class CatalogIndexViewModel
     public List<SelectListItem>? Types { get; set; } = new List<SelectListItem>();
     public int? BrandFilterApplied { get; set; }
     public int? TypesFilterApplied { get; set; }
+    public decimal? PriceMinApplied { get; set; }
+    public decimal? PriceMaxApplied { get; set; }
     public PaginationInfoViewModel? PaginationInfo { get; set; }
 }
