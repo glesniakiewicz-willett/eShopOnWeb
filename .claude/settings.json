@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(git status*)",
+      "PowerShell(git diff*)",
+      "PowerShell(git log*)",
+      "PowerShell(git show*)",
+      "PowerShell(git branch*)",
+      "PowerShell(git rev-parse*)",
+      "PowerShell(git remote -v*)",
+      "PowerShell(git remote get-url*)",
+      "PowerShell(git ls-files*)",
+      "PowerShell(git shortlog*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git branch:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git remote -v:*)",
+      "Bash(git remote get-url:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git shortlog:*)"
+    ]
+  }
+}
