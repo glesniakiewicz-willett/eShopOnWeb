@@ -17,6 +17,12 @@
             <label class="esh-catalog-label" data-title="type">
                 <select asp-for="@Model.CatalogModel.TypesFilterApplied" asp-items="@Model.CatalogModel.Types" class="esh-catalog-filter"></select>
             </label>
+            <label class="esh-catalog-label" data-title="min price">
+                <input asp-for="@Model.CatalogModel.PriceMinApplied" type="number" step="0.01" min="0" placeholder="Min" class="esh-catalog-filter" />
+            </label>
+            <label class="esh-catalog-label" data-title="max price">
+                <input asp-for="@Model.CatalogModel.PriceMaxApplied" type="number" step="0.01" min="0" placeholder="Max" class="esh-catalog-filter" />
+            </label>
             <input class="esh-catalog-send" type="image" src="~/images/arrow-right.svg" />
         </form>
     </div>
